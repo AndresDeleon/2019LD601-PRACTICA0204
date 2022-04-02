@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PRODUCTOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="id_categorias" />
+    </Key>
+    <Property Name="id_categorias" Type="Int32" Nullable="false" />
+    <Property Name="categoria1" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__id_ca__30F848ED" FromRole="Categorias" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="Colore">
+    <Key>
+      <PropertyRef Name="id_colores" />
+    </Key>
+    <Property Name="id_colores" Type="Int32" Nullable="false" />
+    <Property Name="color" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="id_productos" />
+    </Key>
+    <Property Name="id_productos" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_categorias" Type="Int32" />
+    <Property Name="precio" Type="Double" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Productos__id_ca__30F848ED" FromRole="Productos" ToRole="Categorias" />
+  </EntityType>
+  <EntityType Name="Talla">
+    <Key>
+      <PropertyRef Name="id_tallas" />
+    </Key>
+    <Property Name="id_tallas" Type="Int32" Nullable="false" />
+    <Property Name="talla1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Productos__id_ca__30F848ED">
+    <End Role="Categorias" Type="Self.Categoria" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="id_categorias" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="id_categorias" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PRODUCTOSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+    <EntitySet Name="Colores" EntityType="Self.Colore" />
+    <EntitySet Name="Productos" EntityType="Self.Producto" />
+    <EntitySet Name="Tallas" EntityType="Self.Talla" />
+    <AssociationSet Name="FK__Productos__id_ca__30F848ED" Association="Self.FK__Productos__id_ca__30F848ED">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

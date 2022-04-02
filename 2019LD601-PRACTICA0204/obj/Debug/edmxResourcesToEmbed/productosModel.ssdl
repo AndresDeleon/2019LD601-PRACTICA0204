@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PRODUCTOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="id_categorias" />
+    </Key>
+    <Property Name="id_categorias" Type="int" Nullable="false" />
+    <Property Name="categoria" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="estado" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Colores">
+    <Key>
+      <PropertyRef Name="id_colores" />
+    </Key>
+    <Property Name="id_colores" Type="int" Nullable="false" />
+    <Property Name="color" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="estado" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="id_productos" />
+    </Key>
+    <Property Name="id_productos" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="id_categorias" Type="int" />
+    <Property Name="precio" Type="float" />
+    <Property Name="estado" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Tallas">
+    <Key>
+      <PropertyRef Name="id_tallas" />
+    </Key>
+    <Property Name="id_tallas" Type="int" Nullable="false" />
+    <Property Name="talla" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="estado" Type="char" MaxLength="1" />
+  </EntityType>
+  <Association Name="FK__Productos__id_ca__30F848ED">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="id_categorias" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="id_categorias" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PRODUCTOSModelStoreContainer">
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Colores" EntityType="Self.Colores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tallas" EntityType="Self.Tallas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Productos__id_ca__30F848ED" Association="Self.FK__Productos__id_ca__30F848ED">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

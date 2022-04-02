@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PRODUCTOSModelStoreContainer" CdmEntityContainer="PRODUCTOSEntities">
+    <EntitySetMapping Name="Categorias">
+      <EntityTypeMapping TypeName="PRODUCTOSModel.Categoria">
+        <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="id_categorias" ColumnName="id_categorias" />
+          <ScalarProperty Name="categoria1" ColumnName="categoria" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colores">
+      <EntityTypeMapping TypeName="PRODUCTOSModel.Colore">
+        <MappingFragment StoreEntitySet="Colores">
+          <ScalarProperty Name="id_colores" ColumnName="id_colores" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="PRODUCTOSModel.Producto">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="id_productos" ColumnName="id_productos" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_categorias" ColumnName="id_categorias" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tallas">
+      <EntityTypeMapping TypeName="PRODUCTOSModel.Talla">
+        <MappingFragment StoreEntitySet="Tallas">
+          <ScalarProperty Name="id_tallas" ColumnName="id_tallas" />
+          <ScalarProperty Name="talla1" ColumnName="talla" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
